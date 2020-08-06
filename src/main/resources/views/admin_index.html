@@ -1,0 +1,582 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="assert/plugins/bootstrap/css/bootstrap.css">
+    <script type="text/javascript" src="assert/plugins/jquery/jquery-2.1.1.min.js"></script>
+    <script type="text/javascript" src="assert/plugins/bootstrap/js/bootstrap.js"></script>
+    <style type="text/css">
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        .left {
+            width: 300px;
+            height: 550px;
+            float: left;
+            position: relative;
+            top: 100px;
+        }
+
+        tr {
+
+            height: 50px;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        .right {
+            width: 1100px;
+            height: 800px;
+            float: right;
+            overflow: scroll;
+            overflow-x: hidden;
+            /*background: #761c19;*/
+
+        }
+
+        .txt {
+            width: 568px;
+            height: 165px;
+            resize: none;
+        }
+
+        img {
+            width: 1000px;
+            height: 580px;
+        }
+
+        #LB {
+            width: 1000px;
+            height: 600px;
+        }
+
+        ul {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+            border: 1px solid lightgray;
+            background-color: #f3f3f3;
+            position: relative;
+            left: 100px;
+        }
+
+        li {
+            float: left;
+            font-size: 18px;
+        }
+
+        li a {
+            display: block;
+            color: #666;
+            text-align: center;
+            padding: 14px 16px;
+            text-decoration: none;
+        }
+
+        li a:hover:not(.active) {
+            background-color: #ddd;
+        }
+
+        li a.active {
+            color: white;
+            background-color: #4CAF50;
+        }
+
+        .links {
+            padding: 20px 0 10px;
+            width: 1100px;
+            height: auto;
+            font-family: 'Microsoft YaHei';
+            border-top: 1px dotted #2f2f2f;
+            position: relative;
+            left: 200px;
+        }
+
+        ::-webkit-scrollbar {
+            width: 5px;
+            height: 5px;
+        }
+
+        ::-webkit-scrollbar-track, ::-webkit-scrollbar-thumb {
+            border-radius: 999px;
+            border: 0px solid transparent;
+        }
+
+        ::-webkit-scrollbar-track {
+            box-shadow: 1px 1px 5px rgba(100, 100, 100, .2) inset;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            min-height: 20px;
+            background-clip: content-box;
+            box-shadow: 0 0 0 5px rgba(100, 100, 100, .5) inset;
+        }
+
+        ::-webkit-scrollbar-corner {
+            background: white;
+        }
+
+    </style>
+    <script type="text/javascript">
+        $(function () {
+            // 初始化轮播
+            $(".start-slide").click(function () {
+                $("#myCarousel").carousel('cycle');
+            });
+            // 停止轮播
+            $(".pause-slide").click(function () {
+                $("#myCarousel").carousel('pause');
+            });
+            // 循环轮播到上一个项目
+            $(".prev-slide").click(function () {
+                $("#myCarousel").carousel('prev');
+            });
+            // 循环轮播到下一个项目
+            $(".next-slide").click(function () {
+                $("#myCarousel").carousel('next');
+            });
+            // 循环轮播到某个特定的帧
+            $(".slide-one").click(function () {
+                $("#myCarousel").carousel(0);
+            });
+            $(".slide-two").click(function () {
+                $("#myCarousel").carousel(1);
+            });
+            $(".slide-three").click(function () {
+                $("#myCarousel").carousel(2);
+            });
+        });
+    </script>
+    <script type="text/javascript">
+        /* 鼠标特效 */
+        var a_idx = 0;
+        jQuery(document).ready(function ($) {
+            $("body").click(function (e) {
+                var a = new Array("❤富强❤", "❤民主❤", "❤文明❤", "❤和谐❤", "❤自由❤", "❤平等❤", "❤公正❤", "❤法治❤", "❤爱国❤", "❤敬业❤", "❤诚信❤", "❤友善❤");
+                var $i = $("<span></span>").text(a[a_idx]);
+                a_idx = (a_idx + 1) % a.length;
+                var x = e.pageX,
+                    y = e.pageY;
+                $i.css({
+                    "z-index": 999999999999999999999999999999999999999999999999999999999999999999999,
+                    "top": y - 20,
+                    "left": x,
+                    "position": "absolute",
+                    "font-weight": "bold",
+                    "color": "rgb(" + ~~(255 * Math.random()) + "," + ~~(255 * Math.random()) + "," + ~~(255 * Math.random()) + ")"
+                });
+                $("body").append($i);
+                $i.animate({
+                        "top": y - 180,
+                        "opacity": 0
+                    },
+                    1500,
+                    function () {
+                        $i.remove();
+                    });
+            });
+        });
+    </script>
+
+    <script type="text/javascript" src="assert/js/admin_index.js">
+    </script>
+
+</head>
+<body>
+<!--整体大盒子-->
+<div class="container-fluid">
+    <!--    head-->
+    <div class="row">
+        <!--     导航条   -->
+        <nav class="nav">
+            <ul>
+                <li class="toggle"><a href="#"></a></li>
+                <li><a href="index.html">主页</a></li>
+                <li><a href="page.html">关于</a></li>
+                <li><a href="blog.html">博客</a></li>
+                <li><a href="contact.html">论坛</a></li>
+                <li><a href="#"></a></li>
+                <li><a href="#"></a></li>
+            </ul>
+        </nav>
+
+    </div>
+
+    <!--   body内容 -->
+    <div class="container-fluid">
+        <!--   left 左边布局    -->
+        <div class="left" style="position: fixed; overflow-x: hidden;overflow-y: auto;">
+            <!--    table        -->
+            <table class="table table-bordered table-striped table-condensed table-hover ">
+                <!--    thead头部    -->
+                <thead>
+                <tr>
+                    <th>菜单</th>
+                </tr>
+                </thead>
+                <!--   tbody内容     -->
+                <tbody>
+                <tr>
+                    <td id="info"><span> 个人管理员信息</span></td>
+                </tr>
+                <tr>
+                    <td id="post"><span>管理用户发帖</span></td>
+                </tr>
+                <tr>
+                    <td><span>管理用户状态</span></td>
+                </tr>
+                <tr>
+                    <td id="article"><span>管理论坛内容</span></td>
+                </tr>
+                </tbody>
+            </table>
+            <!--     左下       -->
+            <h4>最新资讯</h4>
+            <a href="https://www.gamersky.com/news/201910/1228492.shtml"
+               target="_blank">《COD16》PC配置要求公布：需要175GB硬盘空间</a><br>
+
+            <a href="https://www.gamersky.com/news/201910/1228259.shtml" target="_blank">《COD现代战争》特别行动模式预告
+                4人合作PVE战</a><br>
+
+            <a href="https://www.gamersky.com/news/201910/1227971.shtml" target="_blank">《COD16》发售预告：帅气钱队带你纵横沙场</a><br>
+
+            <a href="https://www.gamersky.com/news/201910/1227525.shtml"
+               target="_blank">PS官方介绍《COD16》独占模式：多人合作生存模式</a><br>
+
+            <a href="https://www.gamersky.com/news/201910/1227362.shtml" target="_blank">《COD现代战争》中字幕后特辑
+                如何成为普莱斯上</a><br>
+
+            <a href="https://www.gamersky.com/news/201910/1227353.shtml" target="_blank">索尼跨平台服务结束测试
+                《COD16》或将率先使用</a><br>
+
+            <a href="https://www.gamersky.com/news/201909/1227051.shtml"
+               target="_blank">《COD现代战争》多人模式列表泄露：34种非常丰富</a><br>
+
+            <a href="https://www.gamersky.com/news/201909/1226677.shtml" target="_blank">《COD16》角色、阵营介绍
+                横跨欧洲中东拯救世界</a><br>
+
+            <a href="https://www.gamersky.com/news/201909/1226504.shtml"
+               target="_blank">COD16艺术总监请求玩家少发有毒言论：开发者也是</a><br>
+
+            <a href="https://www.gamersky.com/news/201909/1226089.shtml" target="_blank">《COD现代战争》故事预告幕后花絮
+                展示主角背景</a><br>
+
+
+        </div>
+    </div>
+    <!--    右边内容    -->
+    <div class="right">
+        <!--    轮播图        -->
+        <div id="LB">
+            <div id="myCarousel" class="carousel slide ">
+                <!-- 轮播（Carousel）指标 -->
+                <ol class="carousel-indicators">
+                    <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+                    <li data-target="#myCarousel" data-slide-to="1"></li>
+                    <li data-target="#myCarousel" data-slide-to="2"></li>
+                </ol>
+
+                <!-- 轮播（Carousel）项目 -->
+                <div class="carousel-inner">
+                    <div class="item active">
+                        <img src="assert/img/lunbo1.jpg" alt="First slide">
+                    </div>
+                    <div class="item ">
+                        <img src="assert/img/lunbo2.jpg" width="1000px" height="580px" alt="Second slide">
+                    </div>
+                    <div class="item">
+                        <img src="assert/img/lunbo4.jpg" alt="Third slide">
+                    </div>
+                </div>
+                <!-- 轮播（Carousel）导航 -->
+
+            </div>
+
+            <!-- 控制按钮 -->
+            <div style="text-align:center; ">
+                <input type="button" class="btn start-slide" style="background: white" value="开始">
+                <input type="button" class="btn pause-slide" style="background: white" value="暂停">
+                <input type="button" class="btn prev-slide" style="background: white" value="上一张">
+                <input type="button" class="btn next-slide" style="background: white" value="下一张">
+                <input type="button" class="btn slide-one" style="background: white" value="第一张">
+                <input type="button" class="btn slide-two" style="background: white" value="第二张">
+                <input type="button" class="btn slide-three" style="background: white" value="第三张">
+            </div>
+        </div>
+        <!--      第一模块      -->
+        <div class="container-fluid" id="one">
+            <table class="table table-bordered " id="tablebody">
+            </table>
+
+
+            <!-- 模态框（Modal） -->
+            <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+                 aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+                                &times;
+                            </button>
+                            <form id="form">
+                                <div class="form-group">
+                                    <label>账号</label>
+                                    <input type="text" class="form-control" id="username" name="username" required>
+                                </div>
+                                <div class="form-group">
+                                    <label>密码</label>
+                                    <input type="password" class="form-control" id="password" name="password" required>
+                                    <span id="msg"></span>
+                                </div>
+                            </form>
+                        </div>
+                        <div class="modal-footer">
+                            <button class="btn btn-default" data-dismiss="modal">关闭
+                            </button>
+                            <button class="btn btn-primary" id="submit">
+                                提交更改
+                            </button>
+                        </div>
+                    </div><!-- /.modal-content -->
+                </div><!-- /.modal -->
+            </div>
+        </div>
+        <!--   第二小模块         -->
+        <div class="container-fluid" id="two" style="display: none">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-md-3">
+                        <span class="btn btn-primary" id="look"><h5> 查看所有的帖子</h5></span>
+                    </div>
+                    <div class="col-md-3">
+                        <span class="btn btn-primary" id="deal"><h5> 待处理的帖子 </h5></span>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="input-group input-group-lg">
+                            <input type="text" class="form-control" id="uid" placeholder="查询某个用户ID的发帖">
+                            <span class="input-group-addon btn" id="seek">搜索</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!--       第二部分的内容展示         -->
+            <div>
+                <table class="table table-bordered text-left " id="twobody">
+
+                </table>
+            </div>
+        </div>
+        <!--        第四部分    -->
+        <div class="container-fluid" id="four" style="display: none">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-md-3">
+                        <span class="btn btn-primary" id="lookarticle"><h5> 查看所有论坛内容</h5></span>
+                    </div>
+                    <div class="col-md-3">
+                        <span class="btn btn-primary" id="addarticle" data-toggle="modal" data-target="#myModal2"><h5> 添加论坛内容 </h5></span>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="input-group input-group-lg">
+                            <input type="text" class="form-control" id="hunt" placeholder="查询某个论坛内容">
+                            <span class="input-group-addon btn" id="hunt1">搜索</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!--       第四部分的内容展示         -->
+            <div>
+                <table class="table table-bordered text-left " id="fourbody">
+
+                </table>
+                <!--         添加论坛内容模态框          -->
+                <div class="modal fade" id="myModal2" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+                     aria-hidden="true">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+                                    &times;
+                                </button>
+                                <h4>
+                                    <mark>添加论坛内容</mark>
+                                </h4>
+                                <form id="form2" ENCTYPE="multipart/form-data" method="post">
+                                    <div class="form-group">
+                                        <label>标题</label>
+                                        <input type="text" class="form-control" id="title" name="title" required>
+                                    </div>
+                                    <div class="form-group">
+                                        <label>内容</label>
+                                        <textarea class="txt" id="content" name="content"></textarea>
+                                        <!--                                            <input  type="password" class="form-control" id="content" name="content" required>-->
+                                    </div>
+                                    <div>
+                                        <select id="category" name="category">
+                                            <option value="1">单机·电玩</option>
+                                            <option value="2">网络游戏</option>
+                                            <option value="3">手机游戏</option>
+                                            <option value="4">动漫动画</option>
+                                        </select>
+                                    </div>
+                                    <div class="form-group">
+                                        <label>图片</label>
+                                        <input type="file" id="img" name="img">
+                                    </div>
+                                    <span id="msg2"></span>
+                                </form>
+                            </div>
+                            <div class="modal-footer">
+                                <button class="btn btn-default" data-dismiss="modal">关闭
+                                </button>
+                                <button class="btn btn-primary" id="submit2">
+                                    提交添加
+                                </button>
+                            </div>
+                        </div><!-- /.modal-content -->
+                    </div><!-- /.modal -->
+                </div>
+                <!--         修改论坛标题模态框             -->
+                <div class="modal fade" id="myModal3" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+                     aria-hidden="true">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+                                    &times;
+                                </button>
+                                <h4>
+                                    <mark>修改论坛标题</mark>
+                                </h4>
+                                <form id="form3" ENCTYPE="multipart/form-data">
+                                    <div class="form-group">
+                                        <label>标题</label>
+                                        <input type="text" class="form-control" id="title2" name="title2" required>
+                                        <span id="msg3"></span>
+                                    </div>
+
+
+                                </form>
+                            </div>
+                            <div class="modal-footer">
+                                <button class="btn btn-default" data-dismiss="modal">关闭
+                                </button>
+                                <button class="btn btn-primary" id="submit3">
+                                    提交添加
+                                </button>
+                            </div>
+                        </div><!-- /.modal-content -->
+                    </div><!-- /.modal -->
+                </div>
+                <!--         修改论坛内容模态框             -->
+                <div class="modal fade" id="myModal4" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+                     aria-hidden="true">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+                                    &times;
+                                </button>
+                                <h4>
+                                    <mark>修改论坛内容</mark>
+                                </h4>
+                                <form id="form4" ENCTYPE="multipart/form-data">
+                                    <div class="form-group">
+                                        <label>内容</label>
+                                        <textarea class="txt" id="content2"></textarea>
+                                        <span id="msg4"></span>
+                                    </div>
+
+                                </form>
+                            </div>
+                            <div class="modal-footer">
+                                <button class="btn btn-default" data-dismiss="modal">关闭
+                                </button>
+                                <button class="btn btn-primary" id="submit4">
+                                    提交添加
+                                </button>
+                            </div>
+                        </div><!-- /.modal-content -->
+                    </div><!-- /.modal -->
+                </div>
+                <!--         修改论坛图片模态框             -->
+                <div class="modal fade" id="myModal5" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+                     aria-hidden="true">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+                                    &times;
+                                </button>
+                                <h4>
+                                    <mark>修改论坛图片</mark>
+                                </h4>
+                                <form id="form5" method="post" enctype="multipart/form-data">
+                                    <div class="form-group">
+                                        <label>图片</label>
+                                        <input type="file" id="img2" name="img3" required>
+                                        <span id="msg5"></span>
+                                    </div>
+                                </form>
+                            </div>
+                            <div class="modal-footer">
+                                <button class="btn btn-default" data-dismiss="modal">关闭
+                                </button>
+                                <button class="btn btn-primary" id="submit5">
+                                    提交添加
+                                </button>
+                            </div>
+                        </div><!-- /.modal-content -->
+                    </div><!-- /.modal -->
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+</div>
+<!--    footed 底部-->
+<div class="links">
+    <span>友情链接：</span>
+    <a href="https://www.gamersky.com/pcgame/" target="_blank">单机游戏</a>
+    <a href="http://www.duowan.com/" target="_blank">多玩游戏</a>
+    <a href="http://games.qq.com/" target="_blank">腾讯游戏</a>
+    <a href="http://www.ali213.net/" target="_blank">游侠网</a>
+    <a href="http://www.yxdown.com/" target="_blank">游迅网</a>
+    <a href="http://www.52pk.com/" target="_blank">52PK游戏网</a>
+    <a href="https://www.douyu.com/?from=linkexchange" target="_blank">斗鱼直播</a>
+    <a href="http://www.37.com/" target="_blank">37游戏</a>
+    <a href="http://game.zol.com.cn/" target="_blank">中关村游戏频道</a>
+    <a href="http://www.07073.com/" target="_blank">07073网页游戏</a>
+    <a href="http://www.doyo.cn/" target="_blank">逗游网</a>
+    <a href="http://www.youzu.com/" target="_blank">游族网络</a>
+    <a href="http://www.gamedog.cn/" target="_blank">游戏狗</a>
+    <a href="http://www.18183.com/ " target="_blank">18183手游网</a>
+    <a href="http://www.pc6.com/" target="_blank">PC6官方下载</a>
+    <a href="http://www.91danji.com/" target="_blank">91单机游戏</a>
+    <a href="http://www.5068.com/" target="_blank">5068儿童网</a>
+    <a href="http://iask.sina.com.cn/" target="_blank">新浪爱问</a>
+    <a href="http://dl.pconline.com.cn/" target="_blank">太平洋下载中心</a>
+    <a href="http://www.tanwan.com" target="_blank">贪玩游戏</a>
+    <a href="http://www.4399.cn/" target="_blank">4399手机游戏网</a>
+    <a href="http://www.3dmgame.com/" target="_blank">3DM游戏网</a>
+</div>
+
+<div id="footer" class=" text-center">
+    <!--done-->
+    Copyright © 2019 Caption
+    <br>
+    <span id="poweredby">Powered by .NET Core 3.0.0-preview9-19423-09 on Linux</span>
+    <div> Powered By
+        <a href="#" target="_blank">Cnblogs</a> |
+        <a href="https://github.com/" target="_blank">GitHub URL</a><br>
+        <span class="glyphicon glyphicon-heart" style="color: red;font-size: 25px"></span>
+    </div>
+</div>
+</body>
+</html>

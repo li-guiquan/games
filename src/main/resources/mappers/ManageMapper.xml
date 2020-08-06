@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!--加载mapper-->
+<mapper namespace="com.quan.games.mappers.IManageMapper">
+
+    <resultMap id="rSetManage" type="com.quan.games.entity.Manage">
+        <id property="mId" column="m_id"/>
+        <result property="mName" column="m_name"/>
+        <result property="mPassword" column="m_password"/>
+    </resultMap>
+<!--查询管理员名-->
+    <select id="checkedManageName" resultType="int" >
+    select count(1) from manage where m_name=#{mName} and is_delete=1;
+    </select>
+    <select id="checkedManage"  resultType="int">
+    select  m_id from manage where m_name=#{manageName} and m_password=#{managePassword}  and is_delete=1;
+    </select>
+<!--   查看管理员信息 -->
+
+    <select id="getListById" resultMap="rSetManage">
+    select m_id,m_name,m_password from manage where m_id=#{id} and is_delete=1;
+    </select>
+<!--   修改管理员的账号或密码 -->
+    <update id="updateManage">
+        update manage set m_name=#{admin.mName},m_password=#{admin.mPassword} where m_id=#{admin.mId};
+    </update>
+
+
+    <resultMap id="rSetManagePost" type="com.quan.games.entity.Post">
+        <id property="pId" column="p_id"/>
+        <result property="pName" column="p_name"/>
+        <result property="pContent" column="p_content"/>
+        <result property="categoryId" column="category_id"/>
+        <result property="userId" column="user_id"/>
+        <result property="isDelete" column="is_delete"/>
+    </resultMap>
+<!--    查询所有用户的帖子-->
+    <select id="getListPost" resultMap="rSetManagePost" >
+        select p_id,p_name,p_content,category_id,user_id,is_delete from post where is_delete=1;
+    </select>
+
+<!--    查询某个用户的发帖-->
+    <select id="getUserPostById" resultMap="rSetManagePost">
+        select p_id, p_name,p_content ,category_id from post where user_id=#{uid} and is_delete=1;
+    </select>
+<!--  删除某用户的帖子  -->
+    <update id="deleteUserPost">
+        update post set is_delete=#{num} where user_id=#{userid} and p_id=#{pids};
+    </update>
+<!--    查询所有待审核的帖子-->
+    <select id="auditPostAll" resultMap="rSetManagePost">
+        select p_id, p_name,p_content,category_id,user_id from post where is_delete=2;
+    </select>
+<!--    审核所有的帖子-->
+    <update id="auditPost" >
+        update post set is_delete=#{state} where p_id=#{pid};
+    </update>
+
+<!--    管理论坛内容-->
+  <!--  <resultMap id="rSetManageArticle" type="com.quan.games.entity.Article">
+        <id property="aId" column="a_id"/>
+        <result property="title" column="title"/>
+        <result property="content" column="content"/>
+        <result property="img" column="img"/>
+        <result property="createDate" column="create_date"/>
+        <result property="isDelete" column="is_delete"/>
+    </resultMap>-->
+<!--  查询所有的论坛内容  -->
+    <select id="getListArticle" resultType="list"  parameterType="com.quan.games.entity.Article">
+        select a_id,title,content,create_date from article where is_delete=1;
+    </select>
+<!--    修改论坛内容标题-->
+    <update id="updateArticleTitle" >
+        update article set title=#{title} where a_id=#{aid} and is_delete=1;
+    </update>
+    <!--    修改论坛内容-->
+    <update id="updateArticleContent" >
+        update article set content=#{content} where a_id=#{aid1} and is_delete=1;
+    </update>
+    <!--    修改论坛内容图片-->
+    <update id="updateArticleImg" >
+        update article set img=#{img} where a_id=#{aid2} and is_delete=1;
+    </update>
+<!--  添加论坛内容  -->
+    <insert id="addArticle">
+        insert into article(title, content, img, create_date ,category_id) values (#{t1},#{t2},#{t3},#{t4},#{t5});
+    </insert>
+<!--  删除论坛内容-->
+    <update id="deleteArticle">
+        update article set is_delete=0 where a_id=#{aId};
+    </update>
+<!--  搜索论坛内容  -->
+    <select id="getListByContent"  resultType="list"  parameterType="com.quan.games.entity.Article">
+    select * from article where  title like #{txt} or content like #{txt};
+    </select>
+
+</mapper>

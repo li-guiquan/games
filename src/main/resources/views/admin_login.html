@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>管理员登录</title>
+    <link rel="stylesheet" href="assert/plugins/bootstrap/css/bootstrap.css">
+    <link href="https://cdn.bootcss.com/jquery.bootstrapvalidator/0.5.3/css/bootstrapValidator.css" rel="stylesheet">
+    <script type="text/javascript" src="assert/plugins/jquery/jquery-2.1.1.min.js"></script>
+    <script src="https://cdn.bootcss.com/jquery.bootstrapvalidator/0.5.3/js/bootstrapValidator.js"></script>
+    <script src="https://cdn.bootcss.com/jquery.bootstrapvalidator/0.5.3/js/language/zh_CN.js"></script>
+    <script type="text/javascript" src="assert/plugins/bootstrap/js/bootstrap.js"></script>
+</head>
+<style type="text/css">
+    * {
+        margin: 0 auto;
+        padding: 0;
+    }
+
+    /*背景*/
+    .bg {
+        background-image: url("assert/img/bg1.jpg ");
+        background-repeat: no-repeat;
+        background-size: 100%;
+    }
+
+    .box {
+        width: 400px;
+        height: 700px;
+    }
+
+    .b-head {
+        position: relative;
+        top: 50px;
+    }
+
+    .login {
+        position: relative;
+        top: 310px;
+    }
+
+    ul {
+        list-style-type: none;
+        margin: 0;
+        padding: 0;
+        overflow: hidden;
+
+        position: relative;
+        left: 100px;
+    }
+
+    li {
+        float: left;
+        font-size: 18px;
+    }
+
+    li a {
+        display: block;
+        color: #666;
+        text-align: center;
+        padding: 14px 16px;
+        text-decoration: none;
+    }
+
+    li a:hover:not(.active) {
+        background-color: #ddd;
+    }
+
+    li a.active {
+        color: white;
+        background-color: #4CAF50;
+    }
+</style>
+<script type="text/javascript" src="assert/js/admin_login.js"></script>
+<body>
+<div id="" class="container-fluid bg">
+    <!--head头部-->
+    <div class="row">
+        <nav class="nav">
+            <ul>
+                <li class="toggle"><a href="#"></a></li>
+                <li><a href="index.html">主页</a></li>
+                <li><a href="page.html">关于</a></li>
+                <li><a href="blog.html">博客</a></li>
+                <li><a href="contact.html">论坛</a></li>
+                <li><a href="#"></a></li>
+                <li><a href="#"></a></li>
+            </ul>
+        </nav>
+
+    </div>
+    <!--    body-->
+    <div class="box">
+        <div class="text-center b-head">
+            <h3>
+                <mark>管理员登录</mark>
+                <small>欢迎您</small></h3>
+        </div>
+        <form id="form">
+            <div class="login ">
+                <div class="form-group">
+                    <label>账号</label>
+                    <input type="text" class="form-control" name="adminName" id="adminName" placeholder="请输入您的管理员账号"
+                           required>
+                    <span></span>
+                </div>
+                <div class="form-group">
+                    <label>密码</label>
+                    <input type="password" class="form-control" name="adminPassword" id="adminPassword"
+                           placeholder="请输入您的管理员密码" required>
+                    <span></span>
+                </div>
+                <div style="margin-left: 80px;">
+                    <button class="btn btn-default" id="btn">登录</button>
+                    <button type="reset" class="btn btn-default">重置</button>
+                    <a href="#" class="btn btn-default">忘记密码</a>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+<!--    footed-->
+<div id="footer" class=" text-center">
+    <!--done-->
+    Copyright © 2019 Caption
+    <br>
+    <span id="poweredby">Powered by .NET Core 3.0.0-preview9-19423-09 on Linux</span>
+    <div> Powered By
+        <a href="#" target="_blank">Cnblogs</a> |
+        <a href="https://github.com/" target="_blank">GitHub URL</a><br>
+        <span class="glyphicon glyphicon-heart" style="color: red;font-size: 25px"></span>
+    </div>
+</div>
+</body>
+</html>
